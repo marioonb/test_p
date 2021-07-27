@@ -1,0 +1,51 @@
+lkasjlknombre de philo 5, fork 0
+nombre de philo 5, fork 1
+nombre de philo 5, fork 2
+nombre de philo 5, fork 3
+nombre de philo 5, fork 4
+a fini les init mutex
+ philo 1
+ philo 2
+ philo 3
+ philo 4
+ philo 5
+0 : le philo 1 prend la fourchette gauche 0x603000001960
+0 : le philo 1 prend la fourchette droite 0x603000001a60
+0 : le philo 1 mange, il commece donc a nanger a 0
+0 : le philo 2 prend la fourchette gauche 0x6030000019a0
+0 : le philo 3 prend la fourchette gauche 0x6030000019e0
+0 : le philo 4 prend la fourchette gauche 0x603000001a20
+105 : le philo 1 rend la fourchette gauche
+106 : le philo 1 rend la fourchette droite
+106 : le philo 1 dort
+106 : le philo 2 prend la fourchette droite 0x603000001960
+106 : le philo 2 mange, il commece donc a nanger a 106
+106 : le philo 5 prend la fourchette gauche 0x603000001a60
+206 : il pense
+206 : le philo 1 est mort
+206 : le philo 2 rend la fourchette gauche
+206 : le philo 2 rend la fourchette droite
+206 : le philo 2 dort
+206 : le philo 3 prend la fourchette droite 0x6030000019a0
+206 : le philo 3 mange, il commece donc a nanger a 206
+307 : il pense
+308 : le philo 2 est mort
+308 : le philo 3 rend la fourchette gauche
+308 : le philo 3 rend la fourchette droite
+308 : le philo 3 dort
+308 : le philo 4 prend la fourchette droite 0x6030000019e0
+308 : le philo 4 mange, il commece donc a nanger a 308
+409 : il pense
+409 : le philo 3 est mort
+409 : le philo 4 rend la fourchette gauche
+409 : le philo 4 rend la fourchette droite
+409 : le philo 4 dort
+409 : le philo 5 prend la fourchette droite 0x603000001a20
+409 : le philo 5 mange, il commece donc a nanger a 409
+510 : le philo 5 rend la fourchette gauche
+510 : le philo 5 rend la fourchette droite
+510 : le philo 5 dort
+510 : il pense
+510 : le philo 4 est mort
+615 : il pense
+616 : le philo 5 est mort

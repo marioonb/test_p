@@ -1,0 +1,26 @@
+1 1 has taken a fork d 0x603000001a60
+1 2 has taken a fork d 0x603000001960
+1 4 has taken a fork d 0x6030000019e0
+1 4 has taken a fork g 0x603000001a20
+1 4 is eating il commence donc a nanger a 1
+1 3 has taken a fork d 0x6030000019a0
+204 4 is sleeping
+204 5 has taken a fork d 0x603000001a20
+204 3 has taken a fork g 0x6030000019e0
+204 3 is eating il commence donc a nanger a 204
+409 4 is thinking
+409 3 is sleeping
+409 4 has taken a fork d 0x6030000019e0
+409 2 has taken a fork g 0x6030000019a0
+409 2 is eating il commence donc a nanger a 409
+610 3 is thinking
+610 3 has taken a fork d 0x6030000019a0
+610 1 has taken a fork g 0x603000001960
+610 2 is sleeping
+610 1 is eating il commence donc a nanger a 610
+814 2 is thinking
+814 1 is sleeping
+814 5 has taken a fork g 0x603000001a60
+814 5 is eating il commence donc a nanger a 814
+814 2 has taken a fork d 0x603000001960
+814 : 5 died
