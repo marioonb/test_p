@@ -40,7 +40,7 @@ void take_fork_and_eat(t_philo *p)
 		p->start_eat = current_time(p->p->start_time); // 205
 		p->action = EAT;
 		//check_death2(p);
-		usleep(100);
+		////usleep(100);
 		print_msg(p,  " --->take fork");
 		//dprintf (1, "%ld %d is eating il commence donc a nanger a %ld\n",current_time(p->p->start_time), p->id, p->start_eat);
 		usleep(p->tt.tt_e * 1000);
@@ -56,10 +56,10 @@ void end_sleep_and_think(t_philo *p)
 void end_eat_and_sleep(t_philo *p)
 {
 	pthread_mutex_unlock(p->forkl);
-	dprintf (1,"%ld : le philo %d rend la fourchette droite\n",  current_time(p->p->start_time), p->id);
+////	dprintf (1,"%ld : le philo %d rend la fourchette droite\n",  current_time(p->p->start_time), p->id);
 //	write(1, "FR\n", 3);
 	pthread_mutex_unlock(p->forkr);
-	dprintf (1,"%ld : le philo %d rend la fourchette gauche\n",current_time(p->p->start_time), p->id);
+////	dprintf (1,"%ld : le philo %d rend la fourchette gauche\n",current_time(p->p->start_time), p->id);
 //	write(1, "FD\n", 3);
 	p->start_sleep = current_time(p->p->start_time);
 	p->action = SLEEP;

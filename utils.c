@@ -27,25 +27,34 @@ long time;
 
 time = current_time(p->p->start_time);
 
+char *msg = NULL;
 //usleep(100);
 pthread_mutex_lock(&p->p->print);
 if (p->action == DEAD)
 	dprintf (1,"%ld : %d died %s\n", time, p->id, c);
+	//msg = "; died";
 else if (p->action == TAKE_FORK_L || p->action == TAKE_FORK_R)
-	dprintf (1,"%ld %d take a fork %s, nb %d\n", time, p->id, c, p->action);
+	//dprintf (1,"%ld %d take a fork %s, nb %d\n", time, p->id, c, p->action);
+	msg = "take a fork";
 else if (p->action == THINK)
-	dprintf (1,"%ld %d is thinking %s\n",time, p->id, c);
+	//dprintf (1,"%ld %d is thinking %s\n",time, p->id, c);
+	msg = " : is thinking";
 else if (p->action == SLEEP)
-	dprintf(1, "%ld %d is sleeping %s\n", time, p->id, c);
+	//dprintf(1, "%ld %d is sleeping %s\n", time, p->id, c);
+	msg = " : is sleeping";
 else if (p->action == EAT)
-	dprintf (1, "%ld %d is eating %s\n", time, p->id, c);
-else
-	dprintf(1, "%ld %d il fait autre chose %s\n", time, p->id, c);
+	//dprintf (1, "%ld %d is eating %s\n", time, p->id, c);
+	msg = "is eating ";
+//else
+//	dprintf(1, "%ld %d il fait autre chose %s\n", time, p->id, c);
 //if (p->p->one_death == 0)
-if (p->action != DEAD && p->p->all_eat == 0)
+
+//if (p->action != DEAD && p->p->all_eat == 0)
+if (p->p->one_death == 0)// && p->action != DEAD && p->p->all_eat == 0)
+	dprintf (1, "%ld %d %s %s\n", time, p->id, msg, c);
 	pthread_mutex_unlock(&p->p->print);
-else
-	dprintf(1, "%ld il a pas unlock a cause de %d qui est a %d %s\n", time, p->id, p->action, c);
+//else
+//	dprintf(1, "%ld il a pas unlock a cause de %d qui est a %d %s\n", time, p->id, p->action, c);
 
 }
 
