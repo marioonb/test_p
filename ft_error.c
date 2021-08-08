@@ -12,7 +12,7 @@
 
 #include "philo.h"
 
-void ft_error(int index)
+void	ft_error(int index)
 {
 	if (index == 1)
 		printf ("Merci d'entrer 4 ou 5 paramètres\n");
@@ -28,4 +28,3 @@ void ft_error(int index)
 		printf ("merci d'entrer des valeurs supérieurs à 0\n");
 	exit (0);
 }
-

@@ -16,14 +16,13 @@ SRCS	=	main.c\
 			action.c \
 			init.c \
 			monitor.c \
+			free_all.c \
 
 NAME	= philo
 
 OBJS	= ${SRCS:.c=.o}
 
-#CFLAGS	=	-Wall -Wextra -Werror -DCMAKE_EXE_LINKER_FLAGS="-fsanitize=address" -g3
-
-CFLAGS	=	-Wall -Wextra -Werror -fsanitize=address -g3
+CFLAGS	=	-Wall -Wextra -Werror 
 
 LOGFILE = $(LOGPATH) `date +'%y.%m.%d %H:%M:%S'`
 MSG = auto save
@@ -32,7 +31,7 @@ MSG = auto save
 		gcc $(CFLAGS) -o $@ -c $<
 
 $(NAME):	${OBJS}
-			gcc -g -fsanitize=address -o $(NAME) $(OBJS)
+			gcc -g  -o $(NAME) $(OBJS)
 
 all:		${NAME}
 

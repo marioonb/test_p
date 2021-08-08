@@ -1,4 +1,3 @@
-
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -13,32 +12,38 @@
 
 #include "philo.h"
 
-
-
-int main(int ac, char **av)
+void	init_all(t_prog *p)
 {
-	t_prog p;
-	int i = 0;
+	p->nb_philo = 0;
+	p->must_eat = 0;
+	p->start_time = 0;
+	p->philo = NULL;
+	p->fork = NULL;
+	p->death_and_food = 0;
+	p->all_eat = 0; // a 1 si tout le monde a mangé
+	p->one_death = 0; // a 1 si un philo est mort
+}
 
+int	main(int ac, char **av)
+{
+	t_prog	p;
+	int		i;
+
+	i = 0;
 	check_parametre(ac, av);
+	init_all(&p);
 	init_time(&p);
 	fill_parametre(av, &p);
 	init_fork(&p);
 	init_philosopher(&p);
 	while (i < p.nb_philo)
-	{
 		i++;
-	}
 	i = 0;
 	pthread_mutex_init(&p.print, NULL);
 	pthread_create(&p.death_and_food, NULL, monitor, &p);
-//	pthread_detach(p.death_and_food);
-while (i < p.nb_philo)
+	while (i < p.nb_philo)
 	{
-
 		pthread_create(&p.philo[i].t, NULL, action, &p.philo[i]);
-		//pthread_detach(p.philo[i].t);
-		//pthread_join(p.philo[i].t, NULL); // si je le laisse il fait thread par thread
 		i++;
 	}
 	pthread_join (p.death_and_food, NULL);
@@ -48,5 +53,6 @@ while (i < p.nb_philo)
 		pthread_join(p.philo[i].t, NULL);
 		i++;
 	}
-	return(0);
+	free_all(&p);
+	return (0);
 }
