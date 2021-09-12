@@ -20,8 +20,33 @@ void	init_all(t_prog *p)
 	p->philo = NULL;
 	p->fork = NULL;
 	p->death_and_food = 0;
-	p->all_eat = 0; // a 1 si tout le monde a mangé
-	p->one_death = 0; // a 1 si un philo est mort
+	p->all_eat = 0;
+	p->one_death = 0;
+	p->stop = 0;
+}
+
+void	check_parametre(int ac, char **av)
+{
+	if (ac < 5)
+		ft_error(1);
+	if (ac > 6)
+		ft_error(2);
+	av++;
+	while (*av)
+	{
+		if (ft_isnumber(av[0]) != 1)
+			ft_error(3);
+		av ++;
+	}
+}
+
+void	initialisation(t_prog *p, char **av)
+{
+	init_all(p);
+	init_time(p);
+	fill_parametre(av, p);
+	init_fork(p);
+	init_philosopher(p);
 }
 
 int	main(int ac, char **av)
@@ -31,11 +56,7 @@ int	main(int ac, char **av)
 
 	i = 0;
 	check_parametre(ac, av);
-	init_all(&p);
-	init_time(&p);
-	fill_parametre(av, &p);
-	init_fork(&p);
-	init_philosopher(&p);
+	initialisation(&p, av);
 	while (i < p.nb_philo)
 		i++;
 	i = 0;

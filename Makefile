@@ -17,6 +17,7 @@ SRCS	=	main.c\
 			init.c \
 			monitor.c \
 			free_all.c \
+			print.c \
 
 NAME	= philo
 
@@ -31,7 +32,7 @@ MSG = auto save
 		gcc $(CFLAGS) -o $@ -c $<
 
 $(NAME):	${OBJS}
-			gcc -g  -o $(NAME) $(OBJS)
+			gcc -g -o $(NAME) $(OBJS) -pthread
 
 all:		${NAME}
 

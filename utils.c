@@ -20,70 +20,6 @@ int	ft_isdigit(int c)
 		return (0);
 }
 
-/*static int	sizenum(int n)
-{
-	int		i;
-
-	i = 1;
-	if (n < 0)
-		n = n * -1;
-	while (n /= 10)
-		i++;
-	return (i);
-}
-
-char		*ft_itoa(int n)
-{
-	char	*chaine;
-	int		nombre;
-	int		i;
-
-	i = sizenum(n);
-	nombre = n;
-	if (n < 0)
-	{
-		nombre = nombre * -1;
-		i = i + 1;
-	}
-	if (!(chaine = malloc(i + 1)))
-		return (0);
-	if (i > 0)
-		chaine[i] = '\0';
-	while (i-- > 0)
-	{
-		chaine[i] = nombre % 10 + '0';
-		nombre = nombre / 10;
-	}
-	if (n < 0)
-		chaine[0] = '-';
-	return (chaine);
-}*/
-
-void	print_msg(t_philo *p)
-{
-	long	time;
-	char	*msg;
-
-	time = current_time(p->p->start_time);
-	msg = NULL;
-	pthread_mutex_lock(&p->p->print);
-	if (p->action == DEAD && p->p->one_death <= 1)
-		dprintf (1, "%ld %d died\n", time, p->id);
-	else if (p->action == TAKE_FORK_L || p->action == TAKE_FORK_R)
-		msg = "has taken a fork";
-	else if (p->action == THINK)
-		msg = "is thinking";
-	else if (p->action == SLEEP)
-		msg = "is sleeping";
-	else if (p->action == EAT)
-		msg = "is eating";
-	if (p->p->one_death == 0 && p->p->all_eat == 0)
-	{	dprintf (1, "%ld %d %s\n", time, p->id, msg);
-		//printf("%d\n", p->p->one_death);
-	}
-	pthread_mutex_unlock (&p->p->print);
-}
-
 int	ft_isnumber(char *str)
 {
 	int		i;
@@ -128,21 +64,6 @@ int	ft_atoi(const char *str)
 	return (nb * a);
 }
 
-void	check_parametre(int ac, char **av)
-{
-	if (ac < 5)
-		ft_error(1);
-	if (ac > 6)
-		ft_error(2);
-	av++;
-	while (*av)
-	{
-		if (ft_isnumber(av[0]) != 1)
-			ft_error(3);
-		av ++;
-	}
-}
-
 long	current_time(long start)
 {
 	struct timeval	tv;
@@ -152,6 +73,7 @@ long	current_time(long start)
 	time = ((tv.tv_sec * 1000) + tv.tv_usec / 1000);
 	return (time - start);
 }
+
 void	fill_parametre(char **av, t_prog *p)
 {
 	p->nb_philo = ft_atoi(av[1]);

@@ -66,6 +66,7 @@ typedef struct s_prog
 	int				all_eat;
 	int				one_death;
 	pthread_mutex_t	print;
+	int				stop;
 }				t_prog;
 
 int		ft_isnumber(char *str);
@@ -87,5 +88,6 @@ void	print_msg(t_philo *p);
 void	*action(void *arg);
 void	*monitor(void *arg);
 void	free_all(t_prog *p);
+void	aff(long time, int idd, char *msg);
 
 #endif

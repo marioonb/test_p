@@ -12,6 +12,22 @@
 
 #include "philo.h"
 
+void	fork_distribution(t_prog *p)
+{
+	int	i;
+
+	i = 0;
+	while (i < p->nb_philo)
+	{
+		if (i == 0)
+			p->philo[i].forkr = &p->fork[p->nb_philo - 1];
+		else
+			p->philo[i].forkr = &p->fork[i - 1];
+		p->philo[i].forkl = &p->fork[i];
+		i++;
+	}
+}
+
 void	init_philosopher(t_prog *p)
 {
 	int	i;
@@ -32,16 +48,7 @@ void	init_philosopher(t_prog *p)
 		p->philo[i].p = p;
 		i++;
 	}
-	i = 0;
-	while (i < p->nb_philo)
-	{
-		if (i == 0)
-			p->philo[i].forkr = &p->fork[p->nb_philo - 1];
-		else
-			p->philo[i].forkr = &p->fork[i - 1];
-		p->philo[i].forkl = &p->fork[i];
-		i++;
-	}
+	fork_distribution(p);
 }
 
 void	init_fork(t_prog *p)

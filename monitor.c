@@ -19,16 +19,10 @@ void	check_death(t_prog *p)
 	i = 0;
 	while (i < p->nb_philo)
 	{
-		//dprintf(1, "current time %ld - start_eat %ld > time to die %d\n", current_time(p->start_time), p->philo[i].start_eat, p->time.tt_d);
-		//if (p->philo[i].start_eat - p->philo[i].last_eat > p->time.tt_d)
 		if (current_time(p->start_time) - p->philo[i].start_eat > p->time.tt_d)
 		{
-			//write(1, "RENTRE ??\n", 10);
 			p->philo[i].action = DEAD;
-			//p->one_death = 1;
 			p->one_death ++;
-			//usleep(100);
-			//dprintf(1, "le philo %d = %d\n", p->philo[i].id, p->philo[i].action);
 			print_msg(&p->philo[i]);
 		}
 		i++;
@@ -54,8 +48,8 @@ void	check_eat_finish(t_prog *p)
 	{
 		p->all_eat = 1;
 		pthread_mutex_lock(&p->print);
-		dprintf(1, "%ld ", current_time(p->start_time));
-		dprintf (1, "All the philosophers ate at least %d times\n", p->must_eat);
+		aff(current_time(p->start_time), p->must_eat,
+			"minimal meal eating by all philosopher");
 		pthread_mutex_unlock(&p->print);
 	}
 }
